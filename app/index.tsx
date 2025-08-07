@@ -73,7 +73,7 @@ export default function App() {
         <Image
           source={{ uri }}
           contentFit="contain"
-          style={{ width: 300, aspectRatio: 1 }}
+          style={{ width: 500, aspectRatio: 1 }}
         />
         <Button onPress={() => setUri(null)} title="Retake Picture" />
         <Button onPress={() => {
@@ -99,14 +99,19 @@ export default function App() {
   //main code to show the user the camera interface
   const renderCamera = () => {
     return (
-      <CameraView
-        style={styles.camera}
-        ref={ref}
-        mode={"picture"}
-        facing={"back"}
-        mute={false}
-        responsiveOrientationWhenOrientationLocked
-      >
+
+      <View style={styles.crate}>
+        <CameraView
+          style={styles.camera}
+          ref={ref}
+          mode={"picture"}
+          facing={"back"}
+          mute={false}
+          responsiveOrientationWhenOrientationLocked
+        >
+          
+        </CameraView>
+
         <View style={styles.shutterContainer}>
 
           {/* icon for taking a picture */}
@@ -124,7 +129,7 @@ export default function App() {
                   style={[
                     styles.shutterBtnInner,
                     {
-                      backgroundColor: "white"
+                      backgroundColor: "#d3d3d3"
                     },
                   ]}
                 />
@@ -133,7 +138,9 @@ export default function App() {
           </Pressable>
 
         </View>
-      </CameraView>
+        
+      </View>
+      
     );
   };
 
@@ -147,31 +154,39 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+  crate: {
+    width: "100%",
+    height: "90%",
+    
+  },
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#ffffe4",
     alignItems: "center",
     justifyContent: "center",
   },
   camera: {
     flex: 1,
-    width: "100%"
+    width: "100%",
+    borderColor: "black",
+    borderWidth: 3,
   },
   shutterContainer: {
     backgroundColor: "transparent",
-    position: "absolute",
-    bottom: 44,
+    // position: "absolute",
+    // bottom: 44,
     left: 0,
     width: "100%",
     alignItems: "center",
     flexDirection: "row",
     justifyContent: "center",
     paddingHorizontal: 30,
+    paddingVertical: 10,
   },
   shutterBtn: {
     backgroundColor: "transparent",
     borderWidth: 5,
-    borderColor: "white",
+    borderColor: "#d3d3d3",
     width: 85,
     height: 85,
     borderRadius: 45,
